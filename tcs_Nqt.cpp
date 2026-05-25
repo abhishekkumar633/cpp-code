@@ -104,17 +104,17 @@ void print_age_greaterThan20(student s[],int n){
     }
 }
 double average_gradeFemale_ascii_value(student s[],int n){
-    int avg=0,count=0;
+    int sum=0,count=0;
     for(int i=0;i<n;i++){
         if(s[i].gender=="female"){
-            avg += int(s[i].grade);
+            sum += int(s[i].grade);
             count++;
         }
     }
     if(count==0){
         return 0;
     }
-    return double((avg)/count);
+    return double((sum)/count);
 }
 
 void bubble_sort(vector<int>&arr,int n){
@@ -143,7 +143,7 @@ int missing_number(vector<int>arr,int n){
    }      
 }
 
-int greater_prior_element(vector<int>arr){   
+int greater_prior_element(vector<int>arr){           
     int n=arr.size(),ans,count=1;
     int ans=arr[0];
     for(int i=0;i<n;i++){

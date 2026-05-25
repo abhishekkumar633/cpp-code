@@ -1,28 +1,40 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<limits.h>
-#include<cmath>
+#include <iostream>
 using namespace std;
-double discounted_amount(int amount){
-    double value,ans;
-    if(amount < 1000){
-        value=(amount*95)/100;
-        ans=round(value*100)/100;
+
+int main() {
+    int row, col;
+
+    cout << "Enter row: ";
+    cin >> row;
+
+    cout << "Enter col: ";
+    cin >> col;
+
+    int arr1[100][100];
+    int arr2[100][100];
+
+    cout << "Enter first matrix:\n";
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < col; j++){
+            cin >> arr1[i][j];
+        }
     }
-    else if(amount >=1000 && amount<5000){
-        value=(amount*90)/100;
-         ans=round(value*100)/100;
+
+    cout << "Enter second matrix:\n";
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < col; j++){
+            cin >> arr2[i][j];
+        }
     }
-    else {
-        value=(amount*85)/100;
-        ans=round(value*100)/100;
+
+    int sum = 0;
+
+    if(row > 2 && col > 2){
+        sum = arr1[2][2] + arr2[2][2];
+        cout << "Sum = " << sum;
+    } else {
+        cout << "Matrix too small for index (2,2)";
     }
-    return ans;
-}
-int main(){
-    int amount;
-    cout<<"enter amount:";
-    cin>>amount;
-    cout<<discounted_amount(amount);
+
+    return 0;
 }

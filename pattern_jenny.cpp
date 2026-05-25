@@ -109,6 +109,19 @@ void printAllTarget_subArray(vector<int>arr,int target){
     }
 }
 
+// centerred triangle 
+void print_triangle_pattern(int row){
+    for(int i=1;i<=row;i++){
+        for(int space=1;space<=row-i;space++){
+            cout<<" ";
+        }
+        for(int j=1;j<=2*i-1;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
 int main(){
    //Half_diamond();
   // cout<< serial_number();
@@ -119,5 +132,6 @@ int main(){
   // right_side_star_pattern();
    //pyramid();
    //inverted_pyramid();
-   butterfly_print();
+   //butterfly_print();
+   print_triangle_pattern(5);
 }

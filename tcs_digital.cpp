@@ -5,6 +5,7 @@
 #include<climits>
 #include<queue>
 #include <sstream>
+#include<unordered_set>
 using namespace std;
 int max_sum_subArray(vector<int>arr){
     int sum=INT_MIN;
@@ -181,10 +182,8 @@ string reverse_words(string str){
     for(int i=0;i<words.size();i++){
         ans += words[i];
         ans += " ";
-
        }
        return ans;
-
 }
 // generate all substrings one wise one and count their freq and subtract max freq with min freq and add to the sum
 int sumOf_beautyOf_substring(string str){ 
@@ -205,12 +204,32 @@ int sumOf_beautyOf_substring(string str){
     }
     return sum;
 }
+
+int sumOf_beautyOf_substring(string str){
+    int sum=0;
+    for(int i=0;i<str.size();i++){
+        vector<int>freq(26,0);
+        for(int j=i;j<str.size();j++){
+            freq[str[j]-'a']++;
+             int mini=INT_MAX;
+             int maxi=INT_MIN;
+                for(int k=0;k<26;k++){
+                        if(freq[k]>0){
+                        maxi=max(maxi,freq[k]);
+                        mini=min(mini,freq[k]);
+                      }           
+                }
+              sum += maxi-mini;
+        }    
+    }
+    return sum;
+}
 pair<char,int> max_value(vector<pair<char,int>>&vec){
    
     pair<char,int>ans={};
     for(auto it:vec){
         if(it.second>ans.second){
-            // ans=max(ans,it.second);
+          //  ans=max(ans,it.second);
             ans=it;
         }
     }
@@ -218,7 +237,7 @@ pair<char,int> max_value(vector<pair<char,int>>&vec){
 }
 int main(){
    // vector<int>arr={-2,1,-3,4,-1,2,1,-5,4};
-//cout<<max_sum_subArray(arr);
+//cout<<max_sum_subArray(arr); 
 //cout<< kadane_algorithm(arr);
 //   vector<int> arr = {1,1,2,2,2,3};
 
@@ -250,19 +269,74 @@ int main(){
 //  string str="aabcbaa";
 //  cout<<sumOf_beautyOf_substring(str);
 
-  int n;
-    cin >> n;
+//   int n;
+//     cin >> n;
 
-    vector<pair<char,int>> vec;
+//     vector<pair<char,int>> vec;
 
-    for(int i = 0; i < n; i++){
-        char ch;
-        int freq;
-        cin >> ch >> freq;
+//     for(int i = 0; i < n; i++){
+//         char ch;
+//         int freq;
+//         cin >> ch >> freq;
 
-        vec.push_back({ch, freq});
-    }
-    pair<char,int>ans=max_value(vec);
-    cout<<ans.first<<" "<<ans.second;
+//         vec.push_back({ch, freq});
+//     }
+//     pair<char,int>ans=max_value(vec);
+//     cout<<ans.first<<" "<<ans.second;
+    // string str= "cbbd";
+    // cout<< longest_palindrome_substring2(str);
+    // string Str1 = "CAT";
+    // string Str2 = "AAT";
 
+    // // Check if the strings are anagrams and output the result
+    // if (isAnagram2(Str1, Str2))
+    //     cout << "True" << endl;  // Output "True" if they are anagrams
+    // else
+    //     cout << "False" << endl;  // Output "False" if they aren't anagrams
+
+    // return 0;
+
+    //  string str1 = "rotation";
+    //  string str2= "tionrota";
+
+    // // Check if the strings are anagrams and output the result
+    // if (rotationOf_another_string(str1, str2))
+    //     cout << "True" << endl;  // Output "True" if they are anagrams
+    // else
+    //     cout << "False" << endl;  // Output "False" if they aren't anagrams
+
+    // return 0;
+    // string str="5347";
+    // cout<<longest_odd_numberString(str);
+    //  vector<int>arr={2,2,3,3,3,3,4};
+    // cout<<count_occurrences_of_specific_ele(arr,4);
+    //cout<<check_powerOf_2(16);
+    // vector<int>arr={2,1,1,3,4,5,5,6};
+    // //vector<int>ans=remove_duplicate_reverse3(arr);
+    // for(int x:ans){
+    //     cout<<x<<" ";
+    // }
+    
+    // vector<string> fruits = {"apple", "banana", "apple", "orange", "banana"};
+
+    // vector<string> ans = remove_duplicateAnd_keep_one(fruits);
+
+    // for (auto &x : ans) {
+    //     cout << x << " ";
+    // }
+    //vector<int>arr={4,4,5,6,5,5};
+    // vector<int>arr={2,5,1,2,6,7,7,6};
+    // cout<<most_frequent_number(arr);
+    // vector<int>arr={2,5,2,8,5,6,8,8};
+    // vector<int>ans=sortByMaxFreq(arr);
+    // for(int x:ans){
+    //     cout<<x<<" ";
+    // }
+    // vector<int>arr={8,2,1};
+    // cout<<third_largest_ele1(arr);
+    // vector<int>arr={1,0,3,4,0,6};
+    // move_zeroTo_end(arr);
+    // for(int x:arr){
+    //     cout<<x<<" ";
+    // }
 }
